@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal do Aluno - C.E. Maravilha</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-bg: #f5f5dc;
+            --secondary-bg: #ffffff;
+            --text-color: #2c3e50;
+            --card-bg: #ffffff;
+            --card-hover: #f0f0f0;
+            --button-color: #8B4513;
+            --button-hover: #6B3410;
+            --card-text: #2c3e50;
+            --card-text-secondary: #666666;
+        }
+
+        .dark {
+            --primary-bg: #1a1a1a;
+            --secondary-bg: #2d2d2d;
+            --text-color: #ffffff;
+            --card-bg: #2d2d2d;
+            --card-hover: #3d3d3d;
+            --button-color: #D2691E;
+            --button-hover: #CD853F;
+            --card-text: #ffffff;
+            --card-text-secondary: #cccccc;
+        }
+
+        body {
+            background-color: var(--primary-bg);
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+
+        .link-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: var(--card-bg);
+        }
+
+        .link-card h3 {
+            color: var(--card-text);
+        }
+
+        .link-card p {
+            color: var(--card-text-secondary);
+        }
+
+        .dark .link-card {
+            background-color: #1f1f1f;
+        }
+
+        .dark .link-card:hover {
+            background-color: #2a2a2a;
+        }
+
+        .school-logo {
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+        }
+
+        .search-box {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            background-color: var(--secondary-bg);
+        }
+
+        .card-logo {
+            height: 60px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .link-card:hover .card-logo {
+            transform: scale(1.1);
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 1000;
+            background-color: var(--button-color) !important;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--button-hover) !important;
+        }
+
+        .search-button {
+            background-color: var(--button-color) !important;
+        }
+
+        .search-button:hover {
+            background-color: var(--button-hover) !important;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .heart {
+            display: inline-block;
+            color: #ff4d4d;
+            animation: heartbeat 1.5s infinite;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Botão de Tema -->
+    <button id="themeToggle" class="theme-toggle text-white p-3 rounded-full transition">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <div class="container mx-auto px-4 py-8">
+        <!-- Cabeçalho -->
+        <header class="flex flex-col items-center mb-12">
+            <div class="school-logo bg-white rounded-full p-4 mb-6">
+                <img src="assets/images/logos/logo.png" alt="Logo C.E. Maravilha" class="w-24 h-24 rounded-full object-cover">
+            </div>
+            <h1 class="text-3xl md:text-4xl font-bold text-center text-[#8B4513] mb-2">Portal do Aluno</h1>
+            <p class="text-lg text-gray-600">Colégio Estadual Maravilha</p>
+        </header>
+
+        <!-- Barra de Pesquisa -->
+        <div class="max-w-2xl mx-auto mb-16">
+            <div class="search-box rounded-full p-2 shadow-lg">
+                <form action="https://www.google.com/search" method="get" target="_blank" class="flex items-center">
+                    <input type="text" name="q" placeholder="Pesquise no Google..." 
+                           class="flex-grow px-6 py-3 rounded-full focus:outline-none focus:ring-2 focus:ring-[#8B4513] bg-transparent">
+                    <button type="submit" class="search-button text-white p-3 rounded-full transition ml-2">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Árvore de Links -->
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Google Classroom -->
+                <div class="link-card bg-white rounded-xl p-6 text-center cursor-pointer hover:bg-blue-50 relative">
+                    <img src="assets/images/logos/classroom.png" alt="Google Classroom" class="card-logo mx-auto">
+                    <h3 class="font-bold text-lg mb-2">Google Classroom</h3>
+                    <p class="text-gray-600 text-sm mb-4">Acesso às salas de aula virtuais</p>
+                    <a href="https://accounts.google.com/ServiceLogin?continue=https%3A%2F%2Fclassroom.google.com&passive=true" 
+                       target="_blank" class="absolute inset-0" aria-label="Google Classroom"></a>
+                </div>
+
+                <!-- Redação PR -->
+                <div class="link-card bg-white rounded-xl p-6 text-center cursor-pointer hover:bg-blue-50 relative">
+                    <img src="assets/images/logos/redacao.png" alt="Redação PR" class="card-logo mx-auto">
+                    <h3 class="font-bold text-lg mb-2">Redação PR</h3>
+                    <p class="text-gray-600 text-sm mb-4">Plataforma de redação</p>
+                    <a href="https://redacao.pr.gov.br/login" target="_blank" class="absolute inset-0" aria-label="Redação PR"></a>
+                </div>
+
+                <!-- Leia Paraná -->
+                <div class="link-card bg-white rounded-xl p-6 text-center cursor-pointer hover:bg-blue-50 relative">
+                    <img src="assets/images/logos/leia.png" alt="Leia Paraná" class="card-logo mx-auto">
+                    <h3 class="font-bold text-lg mb-2">Leia Paraná</h3>
+                    <p class="text-gray-600 text-sm mb-4">Biblioteca digital</p>
+                    <a href="https://leiaparana.odilo.us/" target="_blank" class="absolute inset-0" aria-label="Leia Paraná"></a>
+                </div>
+
+                <!-- Matific -->
+                <div class="link-card bg-white rounded-xl p-6 text-center cursor-pointer hover:bg-blue-50 relative">
+                    <img src="assets/images/logos/matific.png" alt="Matific" class="card-logo mx-auto">
+                    <h3 class="font-bold text-lg mb-2">Matific</h3>
+                    <p class="text-gray-600 text-sm mb-4">Plataforma de matemática</p>
+                    <a href="https://www.matific.com/bra/pt-br/login-page/" target="_blank" class="absolute inset-0" aria-label="Matific"></a>
+                </div>
+
+                <!-- Khan Academy -->
+                <div class="link-card bg-white rounded-xl p-6 text-center cursor-pointer hover:bg-blue-50 relative">
+                    <img src="assets/images/logos/khanacademy.png" alt="Khan Academy" class="card-logo mx-auto h-12">
+                    <h3 class="font-bold text-lg mb-2">Khan Academy</h3>
+                    <p class="text-gray-600 text-sm mb-4">Aulas e exercícios</p>
+                    <a href="https://pt.khanacademy.org/login" target="_blank" class="absolute inset-0" aria-label="Khan Academy"></a>
+                </div>
+
+                <!-- Quizizz -->
+                <div class="link-card bg-white rounded-xl p-6 text-center cursor-pointer hover:bg-blue-50 relative">
+                    <img src="assets/images/logos/quizizz.png" alt="Quizizz" class="card-logo mx-auto">
+                    <h3 class="font-bold text-lg mb-2">Quizizz</h3>
+                    <p class="text-gray-600 text-sm mb-4">Questionários interativos</p>
+                    <a href="https://quizizz.com/login?source=top_nav_login_button&ctaSource=top_nav_login_button&ref=header_tab&webflow_referrer=webflow&lng=pt-BR&fromPage=/" 
+                       target="_blank" class="absolute inset-0" aria-label="Quizizz"></a>
+                </div>
+
+                <!-- Inglês Paraná Teens -->
+                <div class="link-card bg-white rounded-xl p-6 text-center cursor-pointer hover:bg-blue-50 relative">
+                    <img src="assets/images/logos/inglesparanateens.png" alt="Inglês Paraná Teens" class="card-logo mx-auto">
+                    <h3 class="font-bold text-lg mb-2">Inglês Paraná Teens</h3>
+                    <p class="text-gray-600 text-sm mb-4">Plataforma de inglês</p>
+                    <a href="https://pt.englishcentral.com/partner/parana" target="_blank" class="absolute inset-0" aria-label="Inglês Paraná Teens"></a>
+                </div>
+
+                <!-- Inglês Paraná High -->
+                <div class="link-card bg-white rounded-xl p-6 text-center cursor-pointer hover:bg-blue-50 relative">
+                    <img src="assets/images/logos/inglesparanahigh.png" alt="Inglês Paraná High" class="card-logo mx-auto">
+                    <h3 class="font-bold text-lg mb-2">Inglês Paraná High</h3>
+                    <p class="text-gray-600 text-sm mb-4">Plataforma de inglês</p>
+                    <a href="http://inglesparana.learn.corporate.ef.com/" target="_blank" class="absolute inset-0" aria-label="Inglês Paraná High"></a>
+                </div>
+
+                <!-- Alura -->
+                <div class="link-card bg-white rounded-xl p-6 text-center cursor-pointer hover:bg-blue-50 relative">
+                    <img src="assets/images/logos/alura.png" alt="Alura" class="card-logo mx-auto">
+                    <h3 class="font-bold text-lg mb-2">Alura</h3>
+                    <p class="text-gray-600 text-sm mb-4">Cursos de tecnologia</p>
+                    <a href="https://cursos.alura.com.br/edutech" target="_blank" class="absolute inset-0" aria-label="Alura"></a>
+                </div>
+
+                <!-- Mblock -->
+                <div class="link-card bg-white rounded-xl p-6 text-center cursor-pointer hover:bg-blue-50 relative">
+                    <img src="assets/images/logos/mblock.png" alt="Mblock" class="card-logo mx-auto">
+                    <h3 class="font-bold text-lg mb-2">Mblock</h3>
+                    <p class="text-gray-600 text-sm mb-4">Programação e robótica</p>
+                    <a href="https://ide.mblock.cc/" target="_blank" class="absolute inset-0" aria-label="Mblock"></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rodapé -->
+        <footer class="mt-16 pt-8 border-t border-gray-200 text-center">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="https://www.facebook.com/p/Col%C3%A9gio-Estadual-de-Maravilha-100064086033288/" 
+                   target="_blank" 
+                   class="text-gray-500 hover:text-[#8B4513] transition-colors duration-300">
+                    <i class="fab fa-facebook-f text-xl"></i>
+                </a>
+                <a href="https://www.instagram.com/colegiodemaravilha/" 
+                   target="_blank" 
+                   class="text-gray-500 hover:text-[#8B4513] transition-colors duration-300">
+                    <i class="fab fa-instagram text-xl"></i>
+                </a>
+            </div>
+            <p class="text-gray-500 text-sm">
+                2025 - Colégio Estadual Maravilha - feito com <span class="heart">❤</span> por 
+                <a href="https://profbt.vercel.app" target="_blank" class="text-[#8B4513] hover:text-[#6B3410] transition">Prof. Bruno Carvalho</a>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Função para alternar tema
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        const icon = themeToggle.querySelector('i');
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            if (html.classList.contains('dark')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+
+        // Função para rastrear cliques nos links
+        function trackLinkClick(element) {
+            const platform = element.getAttribute('data-platform');
+            console.log(`Link clicado: ${platform}`);
+        }
+
+        // Adicionando evento de clique a todos os cards
+        document.querySelectorAll('.link-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const link = this.querySelector('a');
+                if (link) {
+                    window.open(link.href, '_blank');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
